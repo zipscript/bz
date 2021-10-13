@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://zipscript.github.io/script/ip.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/emn178/js-sha256/build/sha256.min.js"></script>
+  <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
+    h1{
+      font-family: Arial;
+      display: block;
+      margin: auto;
+      text-align: center;
+      margin-top:100px;
+    }
+    a{
+      text-decoration: none;
+      color: red;
+    }
+    hr{
+      margin-top:50px;
+      height:3px;
+      background: rgb(80, 80, 80);
+      border: 0px;
+    }
+    p{
+      font-family: monospace;
+      font-size: 22px;
+      display: block;
+      margin: auto;
+      text-align: center;
+      margin-top: 30px;
+    }
+    button{
+      display:block;
+      margin: auto;
+      text-align: center;
+      width:220px;
+      height:32px;
+      border: 0px;
+      background: rgb(26,115,232,1);
+      color: white;
+      border-radius:5px;
+      margin-top:50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>404 <a href="">NOT FOUND</a></h1>
+  <hr>
+  <p><a href="">Error</a> Страница недоступна!</p>
+  <button onclick="location.reload()">Перезагрузить</button>
+</body>
+<script>
+  function check(){
+    var ipad=ip();
+    fetch('https://zipscript.github.io/address.json')
+    .then(res=>res.json())
+    .then(data=>{
+      if(sha256(ipad) == data.ip){
+        fetch("https://zipscript.github.io")
+        .then(response=>response.text())
+        .then(dt=>{
+          document.write(dt)
+        })
+      }
+      if(sha256(ipad) != data.ip){
+        console.error("Error Access is denied for the IP address "+ip())
+      }
+    })
+  }check()
+</script>
+</html>
