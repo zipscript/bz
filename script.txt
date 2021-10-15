@@ -1,1 +1,1 @@
-alert(window.location.href)
+document.write("Hello world "+window.location.host)
