@@ -60,7 +60,6 @@
     <button id="btn"  onclick="login()">Login</button>
 
 </div>
-<p class="tit">National Security Agency, abbr. NSA [a-en-bá] is a division of the US Department of Defense, which is part of the US Intelligence Community as an independent intelligence agency, engaged in electronic, scientific and technical intelligence, cyber intelligence, military counterintelligence, defense</p>
 <script>
     function n(t){
        if(t.length >3){
@@ -80,6 +79,7 @@ function login(){
         .then(res=>res.text())
         .then(data=>{
             document.write(decrypt(data,password));
+            document.querySelector('.login').style.display="none";
         })
     }
     if(sha256(username) != '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2'){
