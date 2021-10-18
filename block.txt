@@ -32,5 +32,9 @@
 <hr>
 <p id="ip"></p>
 <script>
-    document.getElementById('ip').innerHTML=ip();
+           if(document.getElementById('ip').innerHTML == ''){
+           
+           document.getElementById('ip').innerHTML=localStorage.getItem('ip');
+       }
+   document.getElementById('ip').innerHTML=ip();
 </script>
